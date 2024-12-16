@@ -7,7 +7,10 @@ import { startAuthentication, startRegistration } from '@simplewebauthn/browser'
   providedIn: 'root',
 })
 export class WebAuthnService {
-  private serverUrl = 'http://localhost:3000';
+  
+  // private serverUrl = ' http://192.168.5.16:3000';
+
+  private serverUrl = ' http://localhost:3000';
 
   async signup(email: string): Promise<string> {
     // 1. Get challenge from server
