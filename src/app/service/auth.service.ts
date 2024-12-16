@@ -44,17 +44,20 @@ export class WebAuthnService {
 
   async login(email: string): Promise<string> {
     // 1. Get challenge from server
+    console.log('login email avalable here', email);
     const initResponse = await fetch(`${this.serverUrl}/init-auth?email=${email}`, {
       credentials: 'include',
     });
+    console.log('opitions avalable now', initResponse);
     const options = await initResponse.json();
     if (!initResponse.ok) {
       return options.error;
     }
 
     // 2. Get passkey
+    console.log('get passkey');
     const authJSON = await startAuthentication({optionsJSON:options});
-
+    console.log('authentication started');
     // 3. Verify passkey with DB
     const verifyResponse = await fetch(`${this.serverUrl}/verify-auth`, {
       credentials: 'include',
@@ -69,6 +72,7 @@ export class WebAuthnService {
     if (!verifyResponse.ok) {
       return verifyData.error;
     }
+    console.log(verifyData.verified);
 
     return verifyData.verified ? `Successfully logged in ${email}` : 'Failed to log in';
   }
