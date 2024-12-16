@@ -1,0 +1,22 @@
+<!-- auth.component.html -->
+
+<div style="display: flex; flex-direction: column; gap: 1rem">
+  <input
+    [(ngModel)]="email"
+    type="email"
+    placeholder="Email"
+    style="margin-bottom: 1rem; font-size: 3rem"
+  />
+  <button (click)="signup()" style="font-size: 4rem">Sign Up</button>
+  <button (click)="login()" style="font-size: 4rem">Log In</button>
+  
+  <dialog *ngIf="isModalOpen" style="font-size: 3rem">
+    <button
+      (click)="closeModal()"
+      style="font-size: 2rem; position: absolute; top: 0; right: 0"
+    >
+      &times;
+    </button>
+    <div>{{ modalText }}</div>
+  </dialog>
+</div>
