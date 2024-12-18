@@ -23,10 +23,10 @@ export class WebAuthnService {
     if (!initResponse.ok) {
       return options.error;
     }
-    console.log('no errors found', options);
+    console.log('opetions', options);
     // 2. Create passkey
     const registrationJSON = await startRegistration({optionsJSON:options});
-    console.log('start registration');
+    console.log('registrationJSON', registrationJSON);
     // 3. Save passkey in DB
     const verifyResponse = await fetch(`${this.serverUrl}/verify-register`, {
       credentials: 'include',
