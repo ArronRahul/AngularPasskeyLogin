@@ -24,7 +24,6 @@ export class AppComponent {
   async signup() {
     console.log('signup clicked');
     this.modalText = await this.webAuthnService.signup(this.email);
-    this.isModalOpen = true;
     console.log(this.modalText);
   }
 

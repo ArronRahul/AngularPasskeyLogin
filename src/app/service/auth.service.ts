@@ -8,9 +8,9 @@ import { startAuthentication, startRegistration } from '@simplewebauthn/browser'
 })
 export class WebAuthnService {
   
-  // private serverUrl = ' http://192.168.5.16:3000';
+  private serverUrl = 'https://expresspasskey-bpts91i9x-zccotts-projects-9d7345d7.vercel.app';
 
-  private serverUrl = 'https://expresspasskeylogin.onrender.com';
+  // private serverUrl = 'http://localhost:3000';
 
   async signup(email: string): Promise<string> {
     // 1. Get challenge from server
@@ -44,6 +44,9 @@ export class WebAuthnService {
     console.log(verifyData.verified);
     return verifyData.verified ? `Successfully registered ${email}` : 'Failed to register';
   }
+
+
+
 
   async login(email: string): Promise<string> {
     // 1. Get challenge from server
