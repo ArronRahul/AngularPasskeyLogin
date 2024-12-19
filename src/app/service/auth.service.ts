@@ -23,7 +23,7 @@ export class WebAuthnService {
     if (!initResponse.ok) {
       return options.error;
     }
-    console.log('opetions', options);
+    console.log('options avalable now');
     // 2. Create passkey
     const registrationJSON = await startRegistration({optionsJSON:options});
     console.log('registrationJSON', registrationJSON);
@@ -44,8 +44,6 @@ export class WebAuthnService {
     console.log(verifyData.verified);
     return verifyData.verified ? `Successfully registered ${email}` : 'Failed to register';
   }
-
-
 
 
   async login(email: string): Promise<string> {
@@ -73,7 +71,7 @@ export class WebAuthnService {
       },
       body: JSON.stringify(authJSON),
     });
-
+    console.log('verifying passkey');
     const verifyData = await verifyResponse.json();
     if (!verifyResponse.ok) {
       return verifyData.error;

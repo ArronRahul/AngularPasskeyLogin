@@ -16,8 +16,8 @@ export class AppComponent {
 
   // Start the registration process
   email: string = '';
-  modalText: string = '';
-  isModalOpen: boolean = false;
+  modalText: string = 'status';
+  
 
   constructor(private webAuthnService: WebAuthnService) {}
 
@@ -30,10 +30,5 @@ export class AppComponent {
   async login() {
     console.log('login clicked');
     this.modalText = await this.webAuthnService.login(this.email);
-    this.isModalOpen = true;
-  }
-
-  closeModal() {
-    this.isModalOpen = false;
   }
 }
