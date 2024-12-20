@@ -8,9 +8,9 @@ import { startAuthentication, startRegistration } from '@simplewebauthn/browser'
 })
 export class WebAuthnService {
   
-  // private serverUrl = 'http://localhost:3000';
-
   private serverUrl = 'https://expresspasskey.vercel.app';
+
+  // private serverUrl = 'http://localhost:3000';
 
   async signup(email: string): Promise<string> {
     // 1. Get challenge from server
@@ -23,7 +23,7 @@ export class WebAuthnService {
     if (!initResponse.ok) {
       return options.error;
     }
-    console.log('opetions', options);
+    console.log('options avalable now');
     // 2. Create passkey
     const registrationJSON = await startRegistration({optionsJSON:options});
     console.log('registrationJSON', registrationJSON);
@@ -44,6 +44,7 @@ export class WebAuthnService {
     console.log(verifyData.verified);
     return verifyData.verified ? `Successfully registered ${email}` : 'Failed to register';
   }
+
 
   async login(email: string): Promise<string> {
     // 1. Get challenge from server
@@ -70,7 +71,7 @@ export class WebAuthnService {
       },
       body: JSON.stringify(authJSON),
     });
-
+    console.log('verifying passkey');
     const verifyData = await verifyResponse.json();
     if (!verifyResponse.ok) {
       return verifyData.error;
