@@ -8,7 +8,6 @@ import { startAuthentication, startRegistration } from '@simplewebauthn/browser'
 })
 export class WebAuthnService {
   
-  
   private serverUrl = 'https://expresspasskey.vercel.app';
 
   // private serverUrl = 'http://localhost:3000';
